@@ -1,0 +1,28 @@
+Command line:
+   isim_system_axisim
+     -simmode  tcl
+     -simrunnum  0
+     -socket  54875
+
+Tue Sep  3 17:46:00 2013
+
+
+ Elaboration Time: 0.39 sec
+
+ Current Memory Usage: 330.646 Meg
+
+ Total Signals          : 23127
+ Total Nets             : 102595
+ Total Signal Drivers   : 11170
+ Total Blocks           : 3273
+ Total Primitive Blocks : 1781
+ Total Processes        : 11125
+ Total Traceable Variables  : 13080
+ Total Scalar Nets and Variables : 1483566
+
+ Total Simulation Time: 1.56 sec
+
+ Current Memory Usage: 406.278 Meg
+
+Tue Sep  3 17:46:02 2013
+

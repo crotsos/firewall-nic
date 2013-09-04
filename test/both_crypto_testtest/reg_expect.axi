@@ -1,0 +1,6 @@
+# BARRIER
+B 4
+@ 40
+@ 40
+# BARRIER
+B 4

@@ -1,0 +1,1236 @@
+=====================
+Opened log file
+=====================
+=====================
+Opened log file
+=====================
+Xilinx Platform Studio (XPS)
+Xilinx EDK 13.4 Build EDK_O.87xd
+
+Xilinx EDK 13.4 Build EDK_O.87xd
+
+WARNING:EDK - Invalid path specified for ModuleSearchPath in XMP file. Please
+   make sure that the directory specified exists.
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: axi_interconnect, INSTANCE: axi_interconnect_0 - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 126 
+ERROR:EDK - IPNAME: microblaze, INSTANCE: microblaze_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 134 
+ERROR:EDK - IPNAME: lmb_v10, INSTANCE: microblaze_0_ilmb - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 159 
+ERROR:EDK - IPNAME: lmb_v10, INSTANCE: microblaze_0_dlmb - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 166 
+ERROR:EDK - IPNAME: lmb_bram_if_cntlr, INSTANCE: microblaze_0_i_bram_ctrl - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 173 
+ERROR:EDK - IPNAME: lmb_bram_if_cntlr, INSTANCE: microblaze_0_d_bram_ctrl - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 182 
+ERROR:EDK - IPNAME: bram_block, INSTANCE: microblaze_0_bram_block - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 191 
+ERROR:EDK - IPNAME: proc_sys_reset, INSTANCE: reset_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 198 
+ERROR:EDK - IPNAME: axi_uartlite, INSTANCE: RS232_Uart_1 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 211 
+ERROR:EDK - IPNAME: clock_generator, INSTANCE: clock_generator_0 - not supported
+   for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 226 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_1 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 274 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_2 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 306 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_3 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 338 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_0 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 369 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_1 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 377 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_2 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 385 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_3 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 393 
+ERROR:EDK - IPNAME: nf10_mdio, INSTANCE: nf10_mdio_0 - cannot find MPD for the
+   pcore 'nf10_mdio_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 401 
+ERROR:EDK - IPNAME: axi_timebase_wdt, INSTANCE: axi_timebase_wdt_0 - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 414 
+ERROR:EDK - IPNAME: nf10_input_arbiter, INSTANCE: nf10_input_arbiter_0 - cannot
+   find MPD for the pcore 'nf10_input_arbiter_v1_00_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 423 
+ERROR:EDK - IPNAME: nf10_bram_output_queues, INSTANCE: nf10_bram_output_queues_0
+   - cannot find MPD for the pcore 'nf10_bram_output_queues_v1_00_a' in any of
+   the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 438 
+ERROR:EDK - IPNAME: nf10_nic_output_port_lookup, INSTANCE:
+   nf10_nic_output_port_lookup_0 - cannot find MPD for the pcore
+   'nf10_nic_output_port_lookup_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 453 
+ERROR:EDK - IPNAME: nf10_axi_sim_transactor, INSTANCE: nf10_axi_sim_transactor_0
+   - cannot find MPD for the pcore 'nf10_axi_sim_transactor_v1_00_a' in any of
+   the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 464 
+ERROR:EDK - IPNAME: dma, INSTANCE: dma_0 - cannot find MPD for the pcore
+   'dma_v1_10_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 472 
+ERROR:EDK - IPNAME: nf10_endianess_manager, INSTANCE: nf10_endianess_manager_0 -
+   cannot find MPD for the pcore 'nf10_endianess_manager_v1_00_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 524 
+ERROR:EDK - IPNAME: axi_emc, INSTANCE: axi_emc_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 537 
+ERROR:EDK - IPNAME: axi_gpio, INSTANCE: axi_cfg_fpga_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 565 
+ERROR:EDK - IPNAME: nf10_identifier, INSTANCE: nf10_identifier_0 - cannot find
+   MPD for the pcore 'nf10_identifier_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 578 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_1 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 274 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_2 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 306 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_3 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 338 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_0 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 369 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_1 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 377 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_2 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 385 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_3 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 393 
+ERROR:EDK - IPNAME: nf10_mdio, INSTANCE: nf10_mdio_0 - cannot find MPD for the
+   pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 401 
+ERROR:EDK - IPNAME: nf10_input_arbiter, INSTANCE: nf10_input_arbiter_0 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 423 
+ERROR:EDK - IPNAME: nf10_bram_output_queues, INSTANCE: nf10_bram_output_queues_0
+   - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 438 
+ERROR:EDK - IPNAME: nf10_nic_output_port_lookup, INSTANCE:
+   nf10_nic_output_port_lookup_0 - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 453 
+ERROR:EDK - IPNAME: nf10_axi_sim_transactor, INSTANCE: nf10_axi_sim_transactor_0
+   - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 464 
+ERROR:EDK - IPNAME: dma, INSTANCE: dma_0 - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 472 
+ERROR:EDK - IPNAME: nf10_endianess_manager, INSTANCE: nf10_endianess_manager_0 -
+   cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 524 
+ERROR:EDK - IPNAME: nf10_identifier, INSTANCE: nf10_identifier_0 - cannot find
+   MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 578 
+=====================
+Opened log file
+=====================
+=====================
+Opened log file
+=====================
+Xilinx Platform Studio (XPS)
+Xilinx EDK 13.4 Build EDK_O.87xd
+
+Xilinx EDK 13.4 Build EDK_O.87xd
+
+WARNING:EDK - Invalid path specified for ModuleSearchPath in XMP file. Please
+   make sure that the directory specified exists.
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: axi_interconnect, INSTANCE: axi_interconnect_0 - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 126 
+ERROR:EDK - IPNAME: microblaze, INSTANCE: microblaze_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 134 
+ERROR:EDK - IPNAME: lmb_v10, INSTANCE: microblaze_0_ilmb - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 159 
+ERROR:EDK - IPNAME: lmb_v10, INSTANCE: microblaze_0_dlmb - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 166 
+ERROR:EDK - IPNAME: lmb_bram_if_cntlr, INSTANCE: microblaze_0_i_bram_ctrl - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 173 
+ERROR:EDK - IPNAME: lmb_bram_if_cntlr, INSTANCE: microblaze_0_d_bram_ctrl - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 182 
+ERROR:EDK - IPNAME: bram_block, INSTANCE: microblaze_0_bram_block - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 191 
+ERROR:EDK - IPNAME: proc_sys_reset, INSTANCE: reset_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 198 
+ERROR:EDK - IPNAME: axi_uartlite, INSTANCE: RS232_Uart_1 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 211 
+ERROR:EDK - IPNAME: clock_generator, INSTANCE: clock_generator_0 - not supported
+   for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 226 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_1 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 274 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_2 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 306 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_3 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 338 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_0 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 369 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_1 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 377 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_2 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 385 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_3 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 393 
+ERROR:EDK - IPNAME: nf10_mdio, INSTANCE: nf10_mdio_0 - cannot find MPD for the
+   pcore 'nf10_mdio_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 401 
+ERROR:EDK - IPNAME: axi_timebase_wdt, INSTANCE: axi_timebase_wdt_0 - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 414 
+ERROR:EDK - IPNAME: nf10_input_arbiter, INSTANCE: nf10_input_arbiter_0 - cannot
+   find MPD for the pcore 'nf10_input_arbiter_v1_00_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 423 
+ERROR:EDK - IPNAME: nf10_bram_output_queues, INSTANCE: nf10_bram_output_queues_0
+   - cannot find MPD for the pcore 'nf10_bram_output_queues_v1_00_a' in any of
+   the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 438 
+ERROR:EDK - IPNAME: nf10_nic_output_port_lookup, INSTANCE:
+   nf10_nic_output_port_lookup_0 - cannot find MPD for the pcore
+   'nf10_nic_output_port_lookup_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 453 
+ERROR:EDK - IPNAME: nf10_axi_sim_transactor, INSTANCE: nf10_axi_sim_transactor_0
+   - cannot find MPD for the pcore 'nf10_axi_sim_transactor_v1_00_a' in any of
+   the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 464 
+ERROR:EDK - IPNAME: dma, INSTANCE: dma_0 - cannot find MPD for the pcore
+   'dma_v1_10_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 472 
+ERROR:EDK - IPNAME: nf10_endianess_manager, INSTANCE: nf10_endianess_manager_0 -
+   cannot find MPD for the pcore 'nf10_endianess_manager_v1_00_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 524 
+ERROR:EDK - IPNAME: axi_emc, INSTANCE: axi_emc_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 537 
+ERROR:EDK - IPNAME: axi_gpio, INSTANCE: axi_cfg_fpga_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 565 
+ERROR:EDK - IPNAME: nf10_identifier, INSTANCE: nf10_identifier_0 - cannot find
+   MPD for the pcore 'nf10_identifier_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 578 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_1 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 274 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_2 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 306 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_3 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 338 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_0 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 369 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_1 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 377 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_2 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 385 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_3 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 393 
+ERROR:EDK - IPNAME: nf10_mdio, INSTANCE: nf10_mdio_0 - cannot find MPD for the
+   pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 401 
+ERROR:EDK - IPNAME: nf10_input_arbiter, INSTANCE: nf10_input_arbiter_0 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 423 
+ERROR:EDK - IPNAME: nf10_bram_output_queues, INSTANCE: nf10_bram_output_queues_0
+   - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 438 
+ERROR:EDK - IPNAME: nf10_nic_output_port_lookup, INSTANCE:
+   nf10_nic_output_port_lookup_0 - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 453 
+ERROR:EDK - IPNAME: nf10_axi_sim_transactor, INSTANCE: nf10_axi_sim_transactor_0
+   - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 464 
+ERROR:EDK - IPNAME: dma, INSTANCE: dma_0 - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 472 
+ERROR:EDK - IPNAME: nf10_endianess_manager, INSTANCE: nf10_endianess_manager_0 -
+   cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 524 
+ERROR:EDK - IPNAME: nf10_identifier, INSTANCE: nf10_identifier_0 - cannot find
+   MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 578 
+=====================
+Opened log file
+=====================
+=====================
+Opened log file
+=====================
+Xilinx Platform Studio (XPS)
+Xilinx EDK 13.4 Build EDK_O.87xd
+
+Xilinx EDK 13.4 Build EDK_O.87xd
+
+WARNING:EDK - Invalid path specified for ModuleSearchPath in XMP file. Please
+   make sure that the directory specified exists.
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: axi_interconnect, INSTANCE: axi_interconnect_0 - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 126 
+ERROR:EDK - IPNAME: microblaze, INSTANCE: microblaze_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 134 
+ERROR:EDK - IPNAME: lmb_v10, INSTANCE: microblaze_0_ilmb - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 159 
+ERROR:EDK - IPNAME: lmb_v10, INSTANCE: microblaze_0_dlmb - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 166 
+ERROR:EDK - IPNAME: lmb_bram_if_cntlr, INSTANCE: microblaze_0_i_bram_ctrl - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 173 
+ERROR:EDK - IPNAME: lmb_bram_if_cntlr, INSTANCE: microblaze_0_d_bram_ctrl - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 182 
+ERROR:EDK - IPNAME: bram_block, INSTANCE: microblaze_0_bram_block - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 191 
+ERROR:EDK - IPNAME: proc_sys_reset, INSTANCE: reset_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 198 
+ERROR:EDK - IPNAME: axi_uartlite, INSTANCE: RS232_Uart_1 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 211 
+ERROR:EDK - IPNAME: clock_generator, INSTANCE: clock_generator_0 - not supported
+   for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 226 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_1 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 274 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_2 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 306 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_3 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 338 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_0 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 369 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_1 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 377 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_2 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 385 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_3 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 393 
+ERROR:EDK - IPNAME: nf10_mdio, INSTANCE: nf10_mdio_0 - cannot find MPD for the
+   pcore 'nf10_mdio_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 401 
+ERROR:EDK - IPNAME: axi_timebase_wdt, INSTANCE: axi_timebase_wdt_0 - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 414 
+ERROR:EDK - IPNAME: nf10_input_arbiter, INSTANCE: nf10_input_arbiter_0 - cannot
+   find MPD for the pcore 'nf10_input_arbiter_v1_00_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 423 
+ERROR:EDK - IPNAME: nf10_bram_output_queues, INSTANCE: nf10_bram_output_queues_0
+   - cannot find MPD for the pcore 'nf10_bram_output_queues_v1_00_a' in any of
+   the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 438 
+ERROR:EDK - IPNAME: nf10_nic_output_port_lookup, INSTANCE:
+   nf10_nic_output_port_lookup_0 - cannot find MPD for the pcore
+   'nf10_nic_output_port_lookup_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 453 
+ERROR:EDK - IPNAME: nf10_axi_sim_transactor, INSTANCE: nf10_axi_sim_transactor_0
+   - cannot find MPD for the pcore 'nf10_axi_sim_transactor_v1_00_a' in any of
+   the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 464 
+ERROR:EDK - IPNAME: dma, INSTANCE: dma_0 - cannot find MPD for the pcore
+   'dma_v1_10_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 472 
+ERROR:EDK - IPNAME: nf10_endianess_manager, INSTANCE: nf10_endianess_manager_0 -
+   cannot find MPD for the pcore 'nf10_endianess_manager_v1_00_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 524 
+ERROR:EDK - IPNAME: axi_emc, INSTANCE: axi_emc_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 537 
+ERROR:EDK - IPNAME: axi_gpio, INSTANCE: axi_cfg_fpga_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 565 
+ERROR:EDK - IPNAME: nf10_identifier, INSTANCE: nf10_identifier_0 - cannot find
+   MPD for the pcore 'nf10_identifier_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 578 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_1 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 274 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_2 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 306 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_3 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 338 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_0 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 369 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_1 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 377 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_2 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 385 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_3 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 393 
+ERROR:EDK - IPNAME: nf10_mdio, INSTANCE: nf10_mdio_0 - cannot find MPD for the
+   pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 401 
+ERROR:EDK - IPNAME: nf10_input_arbiter, INSTANCE: nf10_input_arbiter_0 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 423 
+ERROR:EDK - IPNAME: nf10_bram_output_queues, INSTANCE: nf10_bram_output_queues_0
+   - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 438 
+ERROR:EDK - IPNAME: nf10_nic_output_port_lookup, INSTANCE:
+   nf10_nic_output_port_lookup_0 - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 453 
+ERROR:EDK - IPNAME: nf10_axi_sim_transactor, INSTANCE: nf10_axi_sim_transactor_0
+   - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 464 
+ERROR:EDK - IPNAME: dma, INSTANCE: dma_0 - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 472 
+ERROR:EDK - IPNAME: nf10_endianess_manager, INSTANCE: nf10_endianess_manager_0 -
+   cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 524 
+ERROR:EDK - IPNAME: nf10_identifier, INSTANCE: nf10_identifier_0 - cannot find
+   MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 578 
+=====================
+Opened log file
+=====================
+=====================
+Opened log file
+=====================
+Xilinx Platform Studio (XPS)
+Xilinx EDK 13.4 Build EDK_O.87xd
+
+Xilinx EDK 13.4 Build EDK_O.87xd
+
+WARNING:EDK - Invalid path specified for ModuleSearchPath in XMP file. Please
+   make sure that the directory specified exists.
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: axi_interconnect, INSTANCE: axi_interconnect_0 - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 126 
+ERROR:EDK - IPNAME: microblaze, INSTANCE: microblaze_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 134 
+ERROR:EDK - IPNAME: lmb_v10, INSTANCE: microblaze_0_ilmb - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 159 
+ERROR:EDK - IPNAME: lmb_v10, INSTANCE: microblaze_0_dlmb - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 166 
+ERROR:EDK - IPNAME: lmb_bram_if_cntlr, INSTANCE: microblaze_0_i_bram_ctrl - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 173 
+ERROR:EDK - IPNAME: lmb_bram_if_cntlr, INSTANCE: microblaze_0_d_bram_ctrl - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 182 
+ERROR:EDK - IPNAME: bram_block, INSTANCE: microblaze_0_bram_block - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 191 
+ERROR:EDK - IPNAME: proc_sys_reset, INSTANCE: reset_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 198 
+ERROR:EDK - IPNAME: axi_uartlite, INSTANCE: RS232_Uart_1 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 211 
+ERROR:EDK - IPNAME: clock_generator, INSTANCE: clock_generator_0 - not supported
+   for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 226 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_1 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 274 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_2 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 306 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_3 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 338 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_0 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 369 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_1 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 377 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_2 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 385 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_3 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 393 
+ERROR:EDK - IPNAME: nf10_mdio, INSTANCE: nf10_mdio_0 - cannot find MPD for the
+   pcore 'nf10_mdio_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 401 
+ERROR:EDK - IPNAME: axi_timebase_wdt, INSTANCE: axi_timebase_wdt_0 - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 414 
+ERROR:EDK - IPNAME: nf10_input_arbiter, INSTANCE: nf10_input_arbiter_0 - cannot
+   find MPD for the pcore 'nf10_input_arbiter_v1_00_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 423 
+ERROR:EDK - IPNAME: nf10_bram_output_queues, INSTANCE: nf10_bram_output_queues_0
+   - cannot find MPD for the pcore 'nf10_bram_output_queues_v1_00_a' in any of
+   the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 438 
+ERROR:EDK - IPNAME: nf10_nic_output_port_lookup, INSTANCE:
+   nf10_nic_output_port_lookup_0 - cannot find MPD for the pcore
+   'nf10_nic_output_port_lookup_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 453 
+ERROR:EDK - IPNAME: nf10_axi_sim_transactor, INSTANCE: nf10_axi_sim_transactor_0
+   - cannot find MPD for the pcore 'nf10_axi_sim_transactor_v1_00_a' in any of
+   the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 464 
+ERROR:EDK - IPNAME: dma, INSTANCE: dma_0 - cannot find MPD for the pcore
+   'dma_v1_10_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 472 
+ERROR:EDK - IPNAME: nf10_endianess_manager, INSTANCE: nf10_endianess_manager_0 -
+   cannot find MPD for the pcore 'nf10_endianess_manager_v1_00_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 524 
+ERROR:EDK - IPNAME: axi_emc, INSTANCE: axi_emc_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 537 
+ERROR:EDK - IPNAME: axi_gpio, INSTANCE: axi_cfg_fpga_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 565 
+ERROR:EDK - IPNAME: nf10_identifier, INSTANCE: nf10_identifier_0 - cannot find
+   MPD for the pcore 'nf10_identifier_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 578 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_1 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 274 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_2 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 306 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_3 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 338 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_0 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 369 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_1 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 377 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_2 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 385 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_3 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 393 
+ERROR:EDK - IPNAME: nf10_mdio, INSTANCE: nf10_mdio_0 - cannot find MPD for the
+   pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 401 
+ERROR:EDK - IPNAME: nf10_input_arbiter, INSTANCE: nf10_input_arbiter_0 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 423 
+ERROR:EDK - IPNAME: nf10_bram_output_queues, INSTANCE: nf10_bram_output_queues_0
+   - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 438 
+ERROR:EDK - IPNAME: nf10_nic_output_port_lookup, INSTANCE:
+   nf10_nic_output_port_lookup_0 - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 453 
+ERROR:EDK - IPNAME: nf10_axi_sim_transactor, INSTANCE: nf10_axi_sim_transactor_0
+   - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 464 
+ERROR:EDK - IPNAME: dma, INSTANCE: dma_0 - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 472 
+ERROR:EDK - IPNAME: nf10_endianess_manager, INSTANCE: nf10_endianess_manager_0 -
+   cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 524 
+ERROR:EDK - IPNAME: nf10_identifier, INSTANCE: nf10_identifier_0 - cannot find
+   MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 578 
+=====================
+Opened log file
+=====================
+=====================
+Opened log file
+=====================
+Xilinx Platform Studio (XPS)
+Xilinx EDK 13.4 Build EDK_O.87xd
+
+Xilinx EDK 13.4 Build EDK_O.87xd
+
+WARNING:EDK - Invalid path specified for ModuleSearchPath in XMP file. Please
+   make sure that the directory specified exists.
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: axi_interconnect, INSTANCE: axi_interconnect_0 - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 126 
+ERROR:EDK - IPNAME: microblaze, INSTANCE: microblaze_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 134 
+ERROR:EDK - IPNAME: lmb_v10, INSTANCE: microblaze_0_ilmb - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 159 
+ERROR:EDK - IPNAME: lmb_v10, INSTANCE: microblaze_0_dlmb - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 166 
+ERROR:EDK - IPNAME: lmb_bram_if_cntlr, INSTANCE: microblaze_0_i_bram_ctrl - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 173 
+ERROR:EDK - IPNAME: lmb_bram_if_cntlr, INSTANCE: microblaze_0_d_bram_ctrl - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 182 
+ERROR:EDK - IPNAME: bram_block, INSTANCE: microblaze_0_bram_block - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 191 
+ERROR:EDK - IPNAME: proc_sys_reset, INSTANCE: reset_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 198 
+ERROR:EDK - IPNAME: axi_uartlite, INSTANCE: RS232_Uart_1 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 211 
+ERROR:EDK - IPNAME: clock_generator, INSTANCE: clock_generator_0 - not supported
+   for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 226 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_1 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 274 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_2 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 306 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_3 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 338 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_0 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 369 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_1 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 377 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_2 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 385 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_3 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 393 
+ERROR:EDK - IPNAME: nf10_mdio, INSTANCE: nf10_mdio_0 - cannot find MPD for the
+   pcore 'nf10_mdio_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 401 
+ERROR:EDK - IPNAME: axi_timebase_wdt, INSTANCE: axi_timebase_wdt_0 - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 414 
+ERROR:EDK - IPNAME: nf10_input_arbiter, INSTANCE: nf10_input_arbiter_0 - cannot
+   find MPD for the pcore 'nf10_input_arbiter_v1_00_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 423 
+ERROR:EDK - IPNAME: nf10_bram_output_queues, INSTANCE: nf10_bram_output_queues_0
+   - cannot find MPD for the pcore 'nf10_bram_output_queues_v1_00_a' in any of
+   the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 438 
+ERROR:EDK - IPNAME: nf10_nic_output_port_lookup, INSTANCE:
+   nf10_nic_output_port_lookup_0 - cannot find MPD for the pcore
+   'nf10_nic_output_port_lookup_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 453 
+ERROR:EDK - IPNAME: nf10_axi_sim_transactor, INSTANCE: nf10_axi_sim_transactor_0
+   - cannot find MPD for the pcore 'nf10_axi_sim_transactor_v1_00_a' in any of
+   the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 464 
+ERROR:EDK - IPNAME: dma, INSTANCE: dma_0 - cannot find MPD for the pcore
+   'dma_v1_10_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 472 
+ERROR:EDK - IPNAME: nf10_endianess_manager, INSTANCE: nf10_endianess_manager_0 -
+   cannot find MPD for the pcore 'nf10_endianess_manager_v1_00_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 524 
+ERROR:EDK - IPNAME: axi_emc, INSTANCE: axi_emc_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 537 
+ERROR:EDK - IPNAME: axi_gpio, INSTANCE: axi_cfg_fpga_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 565 
+ERROR:EDK - IPNAME: nf10_identifier, INSTANCE: nf10_identifier_0 - cannot find
+   MPD for the pcore 'nf10_identifier_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 578 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_1 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 274 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_2 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 306 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_3 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 338 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_0 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 369 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_1 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 377 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_2 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 385 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_3 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 393 
+ERROR:EDK - IPNAME: nf10_mdio, INSTANCE: nf10_mdio_0 - cannot find MPD for the
+   pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 401 
+ERROR:EDK - IPNAME: nf10_input_arbiter, INSTANCE: nf10_input_arbiter_0 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 423 
+ERROR:EDK - IPNAME: nf10_bram_output_queues, INSTANCE: nf10_bram_output_queues_0
+   - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 438 
+ERROR:EDK - IPNAME: nf10_nic_output_port_lookup, INSTANCE:
+   nf10_nic_output_port_lookup_0 - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 453 
+ERROR:EDK - IPNAME: nf10_axi_sim_transactor, INSTANCE: nf10_axi_sim_transactor_0
+   - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 464 
+ERROR:EDK - IPNAME: dma, INSTANCE: dma_0 - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 472 
+ERROR:EDK - IPNAME: nf10_endianess_manager, INSTANCE: nf10_endianess_manager_0 -
+   cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 524 
+ERROR:EDK - IPNAME: nf10_identifier, INSTANCE: nf10_identifier_0 - cannot find
+   MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 578 
+=====================
+Opened log file
+=====================
+=====================
+Opened log file
+=====================
+Xilinx Platform Studio (XPS)
+Xilinx EDK 13.4 Build EDK_O.87xd
+
+Xilinx EDK 13.4 Build EDK_O.87xd
+
+WARNING:EDK - Invalid path specified for ModuleSearchPath in XMP file. Please
+   make sure that the directory specified exists.
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: axi_interconnect, INSTANCE: axi_interconnect_0 - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 126 
+ERROR:EDK - IPNAME: microblaze, INSTANCE: microblaze_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 134 
+ERROR:EDK - IPNAME: lmb_v10, INSTANCE: microblaze_0_ilmb - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 159 
+ERROR:EDK - IPNAME: lmb_v10, INSTANCE: microblaze_0_dlmb - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 166 
+ERROR:EDK - IPNAME: lmb_bram_if_cntlr, INSTANCE: microblaze_0_i_bram_ctrl - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 173 
+ERROR:EDK - IPNAME: lmb_bram_if_cntlr, INSTANCE: microblaze_0_d_bram_ctrl - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 182 
+ERROR:EDK - IPNAME: bram_block, INSTANCE: microblaze_0_bram_block - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 191 
+ERROR:EDK - IPNAME: proc_sys_reset, INSTANCE: reset_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 198 
+ERROR:EDK - IPNAME: axi_uartlite, INSTANCE: RS232_Uart_1 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 211 
+ERROR:EDK - IPNAME: clock_generator, INSTANCE: clock_generator_0 - not supported
+   for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 226 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_1 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 274 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_2 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 306 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_3 - cannot
+   find MPD for the pcore 'nf10_10g_interface_v1_10_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 338 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_0 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 369 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_1 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 377 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_2 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 385 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_3 - cannot find MPD
+   for the pcore 'diff_input_buf_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 393 
+ERROR:EDK - IPNAME: nf10_mdio, INSTANCE: nf10_mdio_0 - cannot find MPD for the
+   pcore 'nf10_mdio_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 401 
+ERROR:EDK - IPNAME: axi_timebase_wdt, INSTANCE: axi_timebase_wdt_0 - not
+   supported for architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 414 
+ERROR:EDK - IPNAME: nf10_input_arbiter, INSTANCE: nf10_input_arbiter_0 - cannot
+   find MPD for the pcore 'nf10_input_arbiter_v1_00_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 423 
+ERROR:EDK - IPNAME: nf10_bram_output_queues, INSTANCE: nf10_bram_output_queues_0
+   - cannot find MPD for the pcore 'nf10_bram_output_queues_v1_00_a' in any of
+   the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 438 
+ERROR:EDK - IPNAME: nf10_nic_output_port_lookup, INSTANCE:
+   nf10_nic_output_port_lookup_0 - cannot find MPD for the pcore
+   'nf10_nic_output_port_lookup_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 453 
+ERROR:EDK - IPNAME: nf10_axi_sim_transactor, INSTANCE: nf10_axi_sim_transactor_0
+   - cannot find MPD for the pcore 'nf10_axi_sim_transactor_v1_00_a' in any of
+   the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 464 
+ERROR:EDK - IPNAME: dma, INSTANCE: dma_0 - cannot find MPD for the pcore
+   'dma_v1_10_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 472 
+ERROR:EDK - IPNAME: nf10_endianess_manager, INSTANCE: nf10_endianess_manager_0 -
+   cannot find MPD for the pcore 'nf10_endianess_manager_v1_00_a' in any of the
+   repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 524 
+ERROR:EDK - IPNAME: axi_emc, INSTANCE: axi_emc_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 537 
+ERROR:EDK - IPNAME: axi_gpio, INSTANCE: axi_cfg_fpga_0 - not supported for
+   architecture 'virtex5tx' -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 565 
+ERROR:EDK - IPNAME: nf10_identifier, INSTANCE: nf10_identifier_0 - cannot find
+   MPD for the pcore 'nf10_identifier_v1_00_a' in any of the repositories -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 578 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_0 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 242 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_1 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 274 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_2 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 306 
+ERROR:EDK - IPNAME: nf10_10g_interface, INSTANCE: nf10_10g_interface_3 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 338 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_0 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 369 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_1 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 377 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_2 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 385 
+ERROR:EDK - IPNAME: diff_input_buf, INSTANCE: diff_input_buf_3 - cannot find MPD
+   for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 393 
+ERROR:EDK - IPNAME: nf10_mdio, INSTANCE: nf10_mdio_0 - cannot find MPD for the
+   pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 401 
+ERROR:EDK - IPNAME: nf10_input_arbiter, INSTANCE: nf10_input_arbiter_0 - cannot
+   find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 423 
+ERROR:EDK - IPNAME: nf10_bram_output_queues, INSTANCE: nf10_bram_output_queues_0
+   - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 438 
+ERROR:EDK - IPNAME: nf10_nic_output_port_lookup, INSTANCE:
+   nf10_nic_output_port_lookup_0 - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 453 
+ERROR:EDK - IPNAME: nf10_axi_sim_transactor, INSTANCE: nf10_axi_sim_transactor_0
+   - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 464 
+ERROR:EDK - IPNAME: dma, INSTANCE: dma_0 - cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 472 
+ERROR:EDK - IPNAME: nf10_endianess_manager, INSTANCE: nf10_endianess_manager_0 -
+   cannot find MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 524 
+ERROR:EDK - IPNAME: nf10_identifier, INSTANCE: nf10_identifier_0 - cannot find
+   MPD for the pcore -
+   /root/NetFPGA-10G-live/projects/crypto_nic/test/both_testreg_crypto/system.mh
+   s line 578 

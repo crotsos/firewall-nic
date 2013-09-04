@@ -1,0 +1,18 @@
+// Mem file initialization records.
+//
+// Release 13.4 - Data2MEM O.87xd, build 2.7 Nov 11, 2011
+// Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+//
+// Command: data2mem -bm system_axisim_sim.bmm -bd "/root/NetFPGA-10G-live/projects/crypto_nic/test/both_crypto_testtest/bootloops/microblaze_0.elf" tag microblaze_0 -bx "/root/NetFPGA-10G-live/projects/crypto_nic/test/both_crypto_testtest/simulation/behavioral" -u -p "xc5vtx240tff1759-2"
+//
+// Created on Tuesday September 03, 2013 - 05:45:24 pm, from:
+//
+//     Map file     - system_axisim_sim.bmm
+//     Data file(s) - /root/NetFPGA-10G-live/projects/crypto_nic/test/both_crypto_testtest/bootloops/microblaze_0.elf
+//
+// Address space 'microblaze_0.microblaze_0_bram_block_combined', bit lane [7:0].
+//
+// Bus width = 32 bits, number of bus blocks = 1.
+
+@00000000
+    000
