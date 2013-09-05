@@ -68,8 +68,8 @@ module filter
    input [PORT_LEN-1:0]                        hdr_dst_port,
 
    //fifo_signals
-   output                                      m_send,
-   output                                      m_send_rd,
+   output reg                                     m_send,
+   output reg                                     m_send_rd,
 
     // Registers
     input  [NUM_RW_REGS*C_S_AXI_DATA_WIDTH-1:0]  rw_regs,
@@ -101,8 +101,8 @@ module filter
    endfunction // log2
 
    // ------------- Regs/ wires -----------
-   reg                              send;
-   reg                              send_rd;
+   //reg                              send;
+   //reg                              send_rd;
    reg                              send_next;
    reg                              send_rd_next;
    reg [1:0]                        state;
@@ -112,14 +112,14 @@ module filter
 
    // ------------- Logic ------------
 
-   assign m_send = send;
-   assign m_send_rd = send_rd;
+   //assign m_send = send;
+   //assign m_send_rd = send_rd;
 
    always @(*) begin
 
       state_next = state; 
-      send_next = send;
-      send_rd_next = send_rd;
+      send_next = m_send;
+      send_rd_next = m_send_rd;
 
       case (state) 
          WAIT_FOR_HEADER: begin 
@@ -127,7 +127,6 @@ module filter
             send_rd_next = 1'b0;
             if (hdr_rd) begin 
                state_next = LOOKUP;
-               send_rd_next = 1'b1;
             end
          end
 
@@ -151,13 +150,13 @@ module filter
 
    always @(posedge axi_aclk) begin
      if (!axi_aresetn) begin 
-        send <= 0;
-        send_rd <= 0;
+        m_send <= 0;
+        m_send_rd <= 0;
         state <= WAIT_FOR_HEADER;
      end
      else begin
-        send <= send_next;
-        send_rd <= send_rd_next;
+        m_send <= send_next;
+        m_send_rd <= send_rd_next;
         state <= state_next;
      end 
    end

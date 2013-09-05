@@ -80,12 +80,10 @@ module parser
     input  [NUM_WO_REGS*C_S_AXI_DATA_WIDTH-1:0]  wo_regs,
     output [NUM_WO_REGS*C_S_AXI_DATA_WIDTH-1:0]  wo_defaults,
     input  [NUM_RO_REGS*C_S_AXI_DATA_WIDTH-1:0]  ro_regs,
-
-    //output                                       m_send_rd,
-    //output                                       m_send
-    output reg                                      result_wr_en,
+    
     output reg                                      result_din,
-    input                                       result_nearly_full
+    input                                       result_nearly_full,
+    output reg                                      result_wr_en
 //    output reg [31:0]                          source_addr,
 //    output reg [31:0]                          dest_addr,
 //    output reg [15:0]                          source_port,
@@ -124,8 +122,6 @@ module parser
    reg                                 found_header_next;
    reg                                 clear_header;
    reg                                 clear_header_next;
-   reg                                 send;
-   reg                                 send_next;
 
 
    // ------------ Modules -------------
@@ -195,7 +191,6 @@ filter
       found_header_next = found_header;
       clear_header_next = clear_header;
       result_wr_en = 1'b0;
-      send_next = send;
 
       if (!axi_aresetn) begin
          state_next = READ_HEADER_1;
@@ -225,10 +220,12 @@ filter
                   // read destination port
                   dest_port    = fifo_out_tdata[223:208];
                   //
-                  if (source_addr == SRC_IP)
-                     send_next = 1;
-                  else
-                     send_next = 0;
+                  found_header_next = 1'b1;
+                  clear_header_next = 1'b0; 
+//                   if (source_addr == SRC_IP)
+//                     send_next = 1;
+//                  else
+//                     send_next = 0;
                   state_next = PUSH_RESULT;
                   in_fifo_rd_en = 1'b0;
                   
@@ -241,17 +238,19 @@ filter
                end
             end
             PUSH_RESULT: begin
+               found_header_next = 1'b1;
+               clear_header_next = 1'b0;
                in_fifo_rd_en = 1'b0;
-               if (!result_nearly_full) begin
+               if (m_send_rd && !result_nearly_full) begin
                   result_wr_en = 1'b1;
-                  result_din = send;
+                  result_din = m_send;
                   state_next = PAYLOAD;
                end
             end
 
             PAYLOAD: begin
-               found_header_next = 1'b1;
-               clear_header_next = 1'b0; 
+               found_header_next = 1'b0;
+               clear_header_next = 1'b1; 
                if (!in_fifo_empty) begin
                   if (fifo_out_tlast)
                      state_next = READ_HEADER_1;
@@ -272,10 +271,8 @@ filter
         source_port <= 16'h0;
         dest_port <= 16'h0;
         found_header <= 1'b0;
-        send <= 1'b0;
       end else begin
          state <= state_next;
-         send <= send_next;
          found_header <= found_header_next;
          clear_header <= clear_header_next;
       end
