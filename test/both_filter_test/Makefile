@@ -387,6 +387,7 @@ sim: axi_model
 	cd simulation/behavioral && $(AXISIM_FUSE)
 	cd simulation/behavioral && $(AXISIM_CMD) -tclbatch ../../nf10/noninteractive_sim.tcl
 	$(NF_ROOT)/tools/scripts/nf10_sim_reconcile_axi_logs.py
+	$(NF_ROOT)/tools/scripts/nf10_sim_registers_axi_logs.py
 	
 simgui: axi_model
 	./run.py
@@ -395,6 +396,7 @@ simgui: axi_model
 	cd simulation/behavioral && $(AXISIM_FUSE)
 	cd simulation/behavioral && $(AXISIM_CMD) -gui -tclbatch system_axisim_setup.tcl
 	$(NF_ROOT)/tools/scripts/nf10_sim_reconcile_axi_logs.py
+	$(NF_ROOT)/tools/scripts/nf10_sim_registers_axi_logs.py
 
 simreg: axi_model
 	./make_pkts.py

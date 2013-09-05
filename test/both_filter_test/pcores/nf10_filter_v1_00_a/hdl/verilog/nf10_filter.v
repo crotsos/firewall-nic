@@ -116,6 +116,20 @@ module nf10_filter
    wire [NUM_WO_REGS*C_S_AXI_DATA_WIDTH-1:0] wo_defaults;
    wire [NUM_RO_REGS*C_S_AXI_DATA_WIDTH-1:0] ro_regs;
 
+   //wire filter_send;
+   //wire filter_send_rd;
+   //wire s_axis_tready_fifo;
+   //wire s_axis_tready_filter;
+   wire result_wr_en;
+   wire result_din;
+   wire result_nearly_full;
+
+//   wire [NUM_RW_REGS*C_S_AXI_DATA_WIDTH-1:0] filter_rw_regs;
+//   wire [NUM_RW_REGS*C_S_AXI_DATA_WIDTH-1:0] filter_rw_defaults;
+//   wire [NUM_WO_REGS*C_S_AXI_DATA_WIDTH-1:0] filter_wo_regs;
+//   wire [NUM_WO_REGS*C_S_AXI_DATA_WIDTH-1:0] filter_wo_defaults;
+//   wire [NUM_RO_REGS*C_S_AXI_DATA_WIDTH-1:0] filter_ro_regs;
+
    // ------------ Modules -------------
 
    axi_lite_regs
@@ -161,7 +175,7 @@ module nf10_filter
         );
 
    // filter (user-logic)
-   filter #
+   parser #
    (
      .C_M_AXIS_DATA_WIDTH  (C_M_AXIS_DATA_WIDTH),
      .C_S_AXIS_DATA_WIDTH  (C_S_AXIS_DATA_WIDTH),
@@ -172,7 +186,56 @@ module nf10_filter
      .NUM_WO_REGS          (NUM_WO_REGS),
      .NUM_RO_REGS          (NUM_RO_REGS)
    )
-     filter
+     parser
+       (
+         // Global Ports
+         .axi_aclk      (s_axi_aclk),
+         .axi_aresetn   (s_axi_aresetn),
+
+         // Master Stream Ports (interface to data path)
+//         .m_axis_tdata  (m_axis_tdata),
+//         .m_axis_tstrb  (m_axis_tstrb),
+//         .m_axis_tuser  (m_axis_tuser),
+//         .m_axis_tvalid (m_axis_tvalid),
+//         .m_axis_tready (m_axis_tready),
+
+         //.m_send        (filter_send),
+         //.m_send_rd        (filter_send_rd),
+         .result_wr_en(result_wr_en),
+         .result_din(result_din),
+         .result_nearly_full(result_nearly_full),
+
+//         .m_axis_tlast  (m_axis_tlast),
+
+         // Slave Stream Ports (interface to RX queues)
+         .s_axis_tdata  (s_axis_tdata),
+         .s_axis_tstrb  (s_axis_tstrb),
+         .s_axis_tuser  (s_axis_tuser),
+         .s_axis_tvalid (s_axis_tvalid),
+         .s_axis_tready (s_axis_tready_filter),
+         .s_axis_tlast  (s_axis_tlast),
+
+         // Registers
+         .rw_regs       (rw_regs),
+         .rw_defaults   (rw_defaults),
+         .wo_regs       (wo_regs),
+         .wo_defaults   (wo_defaults),
+         .ro_regs       (ro_regs)
+       );
+
+   // filter (user-logic)
+   fifo_store #
+   (
+     .C_M_AXIS_DATA_WIDTH  (C_M_AXIS_DATA_WIDTH),
+     .C_S_AXIS_DATA_WIDTH  (C_S_AXIS_DATA_WIDTH),
+     .C_M_AXIS_TUSER_WIDTH (C_M_AXIS_TUSER_WIDTH),
+     .C_S_AXIS_TUSER_WIDTH (C_S_AXIS_TUSER_WIDTH),
+
+     .NUM_RW_REGS          (NUM_RW_REGS),
+     .NUM_WO_REGS          (NUM_WO_REGS),
+     .NUM_RO_REGS          (NUM_RO_REGS)
+   )
+     fifo_store
        (
          // Global Ports
          .axi_aclk      (s_axi_aclk),
@@ -194,12 +257,21 @@ module nf10_filter
          .s_axis_tready (s_axis_tready),
          .s_axis_tlast  (s_axis_tlast),
 
+         .result_wr_en(result_wr_en),
+         .result_din(result_din),
+         .result_nearly_full(result_nearly_full)
+
+         //.s_send        (filter_send),
+         //.s_send_rd     (filter_send_rd)
+
          // Registers
-         .rw_regs       (rw_regs),
-         .rw_defaults   (rw_defaults),
-         .wo_regs       (wo_regs),
-         .wo_defaults   (wo_defaults),
-         .ro_regs       (ro_regs)
+//         .rw_regs       (rw_regs),
+//         .rw_defaults   (rw_defaults),
+//         .wo_regs       (wo_regs),
+//         .wo_defaults   (wo_defaults),
+//         .ro_regs       (ro_regs)
        );
+
+   //assign s_axis_tready = s_axis_tready_fifo ; //& s_axis_tready_filter;
 
 endmodule

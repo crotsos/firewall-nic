@@ -59,12 +59,12 @@ module parser
     input axi_aresetn,
 
     // Master Stream Ports (interface to data path downstream)
-    output reg [C_M_AXIS_DATA_WIDTH - 1:0]         m_axis_tdata,
-    output reg [((C_M_AXIS_DATA_WIDTH / 8)) - 1:0] m_axis_tstrb,
-    output reg [C_M_AXIS_TUSER_WIDTH-1:0]          m_axis_tuser,
-    output reg                                    m_axis_tvalid,
-    input                                      m_axis_tready,
-    output reg                                    m_axis_tlast,
+//    output reg [C_M_AXIS_DATA_WIDTH - 1:0]         m_axis_tdata,
+//    output reg [((C_M_AXIS_DATA_WIDTH / 8)) - 1:0] m_axis_tstrb,
+//    output reg [C_M_AXIS_TUSER_WIDTH-1:0]          m_axis_tuser,
+//    output reg                                    m_axis_tvalid,
+//    input                                      m_axis_tready,
+//    output reg                                    m_axis_tlast,
 
     // Slave Stream Ports (interface to data path upstream)
     input [C_S_AXIS_DATA_WIDTH - 1:0]          s_axis_tdata,
@@ -81,16 +81,25 @@ module parser
     output [NUM_WO_REGS*C_S_AXI_DATA_WIDTH-1:0]  wo_defaults,
     input  [NUM_RO_REGS*C_S_AXI_DATA_WIDTH-1:0]  ro_regs,
 
-    output reg [31:0]                          source_addr,
-    output reg [31:0]                          dest_addr,
-    output reg [15:0]                          source_port,
-    output reg [15:0]                          dest_port,
-    output reg                                 found_header
+    //output                                       m_send_rd,
+    //output                                       m_send
+    output reg                                      result_wr_en,
+    output reg                                      result_din,
+    input                                       result_nearly_full
+//    output reg [31:0]                          source_addr,
+//    output reg [31:0]                          dest_addr,
+//    output reg [15:0]                          source_port,
+//    output reg [15:0]                          dest_port,
+//    output reg                                 found_header
 );
 
-   localparam READ_HEADER_1 = 2'b00;
-   localparam READ_HEADER_2 = 2'b01;
-   localparam PAYLOAD       = 2'b10;
+   localparam READ_HEADER_1 = 3'b000;
+   localparam READ_HEADER_2 = 3'b001;
+   localparam PUSH_RESULT   = 3'b010;
+   localparam PAYLOAD       = 3'b011;
+   localparam SRC_IP = 32'hAAAAAAAA;
+   localparam DST_IP = 32'hBBBBBBBB;
+
 
    // ------------- Regs/ wires -----------
 
@@ -104,14 +113,26 @@ module parser
    wire                             fifo_tvalid;
    wire                             fifo_tlast;
 
-   reg                              state;
-   reg                              state_next;
+   reg [2:0]                           state;
+   reg [2:0]                           state_next;
+   
+   reg [31:0]                          source_addr;
+   reg [31:0]                          dest_addr;
+   reg [15:0]                          source_port;
+   reg [15:0]                          dest_port;
+   reg                                 found_header;
+   reg                                 found_header_next;
+   reg                                 clear_header;
+   reg                                 clear_header_next;
+   reg                                 send;
+   reg                                 send_next;
+
 
    // ------------ Modules -------------
 
    fallthrough_small_fifo
    #( .WIDTH(C_M_AXIS_DATA_WIDTH+C_M_AXIS_TUSER_WIDTH+C_M_AXIS_DATA_WIDTH/8+1),
-      .MAX_DEPTH_BITS(2)
+      .MAX_DEPTH_BITS(20)
     )
     input_fifo
     ( // Outputs
@@ -127,53 +148,67 @@ module parser
       .reset                        (~axi_aresetn),
       .clk                          (axi_aclk));
 
+filter #
+   (
+     .C_M_AXIS_DATA_WIDTH  (C_M_AXIS_DATA_WIDTH),
+     .C_S_AXIS_DATA_WIDTH  (C_S_AXIS_DATA_WIDTH),
+     .C_M_AXIS_TUSER_WIDTH (C_M_AXIS_TUSER_WIDTH),
+     .C_S_AXIS_TUSER_WIDTH (C_S_AXIS_TUSER_WIDTH),
+
+     .NUM_RW_REGS          (NUM_RW_REGS),
+     .NUM_WO_REGS          (NUM_WO_REGS),
+     .NUM_RO_REGS          (NUM_RO_REGS)
+   )
+filter
+    ( // Outputs
+      .m_send_rd                      (m_send_rd),
+      .m_send                         (m_send),
+      
+      // Inputs
+      .hdr_rd                       (found_header),
+      .hdr_clear                    (clear_header),
+      .hdr_src_ip                   (source_addr),
+      .hdr_dst_ip                   (dest_addr),
+      .hdr_src_port                 (source_port),
+      .hdr_dst_port                 (dest_port),
+      .rw_regs                      (rw_regs),
+      .rw_defaults                  (rw_defaults),
+      .wo_regs                      (wo_regs),
+      .wo_defaults                  (wo_defaults),
+      
+      .axi_aclk                     (axi_aclk),
+      .axi_aresetn                  (axi_aresetn)
+   );
+
    // ------------- Logic ------------
 
+   assign s_axis_tready = ~in_fifo_nearly_full;
+
    always @(*) begin
-      m_axis_tuser = fifo_out_tuser;
-      m_axis_tlast = fifo_out_tlast;
-      m_axis_tstrb = fifo_out_tstrb;
-      m_axis_tvalid = 0;
-
-      m_axis_tdata = fifo_out_tdata;
-
       in_fifo_rd_en = 0;
 
-      if (m_axis_tready && !in_fifo_empty) begin
+      if (!in_fifo_empty) begin
         in_fifo_rd_en = 1;
       end
 
       state_next = state; 
+      found_header_next = found_header;
+      clear_header_next = clear_header;
+      result_wr_en = 1'b0;
+      send_next = send;
 
       if (!axi_aresetn) begin
          state_next = READ_HEADER_1;
-         m_axis_tuser = 'h0;
-         m_axis_tlast = 'h0;
-         m_axis_tstrb = 0;
-         m_axis_tvalid = 0;
-         m_axis_tdata = 0;
-         in_fifo_rd_en = 0;
+         found_header = 1'b0;
+         clear_header = 1'b0; 
+         found_header_next = 1'b0;
+         clear_header_next = 1'b0; 
       end else begin
-         m_axis_tuser = fifo_out_tuser;
-         m_axis_tlast = fifo_out_tlast;
-         m_axis_tstrb = fifo_out_tstrb;
-         m_axis_tvalid = 0;
-
-         m_axis_tdata = fifo_out_tdata;
-
-         in_fifo_rd_en = 0;
-
-         if (m_axis_tready && !in_fifo_empty) begin
-            in_fifo_rd_en = 1;
-         end
-
-         state_next = state; 
-
          case (state) 
             READ_HEADER_1: begin
-               m_axis_tvalid = ~in_fifo_empty;
-               found_header = 1'b0;
-               if (m_axis_tvalid && m_axis_tready) begin 
+               found_header_next = 1'b0;
+               clear_header_next = 1'b1; 
+               if (!in_fifo_empty) begin 
                   state_next = READ_HEADER_2; 
                   // read source IP address
                   source_addr        = fifo_out_tdata[47:16];
@@ -182,41 +217,68 @@ module parser
                end
             end   
             READ_HEADER_2: begin
-               m_axis_tvalid = ~in_fifo_empty;
-               if(m_axis_tvalid && m_axis_tready) begin
+               if(!in_fifo_empty) begin
                   // read last 2 bytes of destination IP address
                   dest_addr[15:0] = fifo_out_tdata[255:240];
                   // read source port
                   source_port  = fifo_out_tdata[239:224];
-                  dest_port    = fifo_out_tdata[223:208];
                   // read destination port
+                  dest_port    = fifo_out_tdata[223:208];
                   //
-                  found_header = 1'b1;
-                  if(!m_axis_tlast)
-                     state_next = PAYLOAD; 
-                  else 
-                     state_next = READ_HEADER_1; 
+                  if (source_addr == SRC_IP)
+                     send_next = 1;
+                  else
+                     send_next = 0;
+                  state_next = PUSH_RESULT;
+                  in_fifo_rd_en = 1'b0;
+                  
+                  //found_header_next = 1'b1;
+                  //clear_header_next = 1'b0; 
+                  //if(!fifo_out_tlast)
+                  //   state_next = PAYLOAD; 
+                  //else 
+                  //   state_next = READ_HEADER_1; 
                end
-            end   
+            end
+            PUSH_RESULT: begin
+               in_fifo_rd_en = 1'b0;
+               if (!result_nearly_full) begin
+                  result_wr_en = 1'b1;
+                  result_din = send;
+                  state_next = PAYLOAD;
+               end
+            end
+
             PAYLOAD: begin
-               m_axis_tvalid = ~in_fifo_empty;
-               found_header = 1'b0;
-               if (m_axis_tvalid && m_axis_tready) begin
-                  if (m_axis_tlast)
+               found_header_next = 1'b1;
+               clear_header_next = 1'b0; 
+               if (!in_fifo_empty) begin
+                  if (fifo_out_tlast)
                      state_next = READ_HEADER_1;
                   else
                      state_next = PAYLOAD;
                end
             end   
-         endcase
+       
+        endcase
       end
    end
 
   always @(posedge axi_aclk) begin
-     if (!axi_aresetn)
+     if (!axi_aresetn) begin
         state <= READ_HEADER_1;
-      else
+        source_addr <= 32'h0;
+        dest_addr <= 32'h0;
+        source_port <= 16'h0;
+        dest_port <= 16'h0;
+        found_header <= 1'b0;
+        send <= 1'b0;
+      end else begin
          state <= state_next;
+         send <= send_next;
+         found_header <= found_header_next;
+         clear_header <= clear_header_next;
+      end
    end 
 
 endmodule

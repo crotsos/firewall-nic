@@ -16,8 +16,11 @@ SA = "aa:bb:cc:dd:ee:ff"
 DA = "00:ca:fe:00:00:02"
 TTL = 64
 DST_IP = "192.168.1.1"
-SRC_IP = "192.168.0.1"
+#SRC_IP = "192.168.0.1"
+SRC_IP = "170.170.170.170"
 nextHopMAC = "dd:55:dd:66:dd:77"
+
+BOGUS_IP = "100.100.100.100"
 
 # define the key we want to use to encrypt the packet
 key = 0x1234567
@@ -39,34 +42,34 @@ if isHW():
 	    nftest_expect_dma('nf2', encrypt_pkt(key,pkt))
 
 else:
-	NUM_PKTS = 5
+	NUM_PKTS = 20
 
 	print "Sending now: "
 
 	pkts=[]
-	encrypt_pkts=[]
+        exp_pkts = []
+	#encrypt_pkts=[]
 	# A simple TCP/IP packet embedded in an Ethernet II frame
 	for i in range(NUM_PKTS):
-	    pkt = make_IP_pkt(src_MAC=SA, dst_MAC=DA, src_IP=SRC_IP, dst_IP=DST_IP,
-		              pkt_len=100)
-	    #pkt.time = i*(1e-8)
-	    # Set source network interface for DMA stream
-	    #pkt.tuser_sport = 1 << (2%4*2 + 1) # PCI ports are odd-numbered
+            if i % 2 == 0:
+                src_ip = SRC_IP
+            else:
+                src_ip = BOGUS_IP
+
+	    pkt = make_IP_pkt(src_MAC=SA, dst_MAC=DA, src_IP=src_ip, dst_IP=DST_IP,
+			      pkt_len=500)
 	    pkt.tuser_sport = 1
 	    pkts.append(pkt)
-	    encrypt_pkts.append(encrypt_pkt(key, pkt))
+          
+            if i % 2 == 0:
+            	exp_pkts.append(pkt)
 
-	for i in range(NUM_PKTS):
-	    for pkt in pkts:
-	        pkt.time = i*(1e-8)
-
-	    for pkt in encrypt_pkts:
-	        pkt.time = i*(1e-8)
+	for pkt in pkts:
+	    pkt.time = i*(1e-8)
 
 	# PCI interface
-
 	nftest_send_phy('nf0', pkts)
-	nftest_expect_dma('nf0', encrypt_pkts)
+	nftest_expect_dma('nf0', exp_pkts)
 
 print ""
 mres=[]

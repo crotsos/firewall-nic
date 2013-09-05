@@ -40,4 +40,6 @@ lib proc_common_v3_00_a  all
 lib axi_lite_ipif_v1_01_a  all
 lib nf10_proc_common_v1_00_a  all
 lib nf10_filter_v1_00_a filter verilog
+lib nf10_filter_v1_00_a fifo_store verilog
+lib nf10_filter_v1_00_a parser verilog
 lib nf10_filter_v1_00_a nf10_filter verilog

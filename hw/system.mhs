@@ -462,14 +462,6 @@ BEGIN nf10_nic_output_port_lookup
  PORT axi_resetn = Peripheral_aresetn
 END
 
-BEGIN nf10_axi_sim_transactor
- PARAMETER INSTANCE = nf10_axi_sim_transactor_0
- PARAMETER HW_VER = 1.00.a
- BUS_INTERFACE M_AXI = axi_interconnect_0
- PORT M_AXI_ARESETN = Peripheral_aresetn
- PORT M_AXI_ACLK = control_clk
-END
-
 BEGIN dma
  PARAMETER INSTANCE = dma_0
  PARAMETER HW_VER = 1.10.a
@@ -594,7 +586,14 @@ BEGIN nf10_filter
  BUS_INTERFACE M_AXIS = nf10_filter_0_M_AXIS
  BUS_INTERFACE S_AXIS = nf10_nic_output_port_lookup_0_M_AXIS
  BUS_INTERFACE S_AXI = axi_interconnect_0
- PORT s_axi_aresetn = reset_0_Peripheral_Reset
+ PORT s_axi_aresetn = Peripheral_aresetn
  PORT s_axi_aclk = core_clk
+END
+
+BEGIN nf10_axi_sim_transactor
+ PARAMETER INSTANCE = nf10_axi_sim_transactor_0
+ PARAMETER HW_VER = 1.10.a
+ BUS_INTERFACE M_AXI = axi_interconnect_0
+ PORT M_AXI_ACLK = control_clk
 END
 

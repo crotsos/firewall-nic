@@ -58,21 +58,18 @@ module filter
     input axi_aclk,
     input axi_aresetn,
 
-    // Master Stream Ports (interface to data path downstream)
-    output [C_M_AXIS_DATA_WIDTH - 1:0]         m_axis_tdata,
-    output [((C_M_AXIS_DATA_WIDTH / 8)) - 1:0] m_axis_tstrb,
-    output [C_M_AXIS_TUSER_WIDTH-1:0]          m_axis_tuser,
-    output                                     m_axis_tvalid,
-    input                                      m_axis_tready,
-    output                                     m_axis_tlast,
 
-    // Slave Stream Ports (interface to data path upstream)
-    input [C_S_AXIS_DATA_WIDTH - 1:0]          s_axis_tdata,
-    input [((C_S_AXIS_DATA_WIDTH / 8)) - 1:0]  s_axis_tstrb,
-    input [C_S_AXIS_TUSER_WIDTH-1:0]           s_axis_tuser,
-    input                                      s_axis_tvalid,
-    output                                     s_axis_tready,
-    input                                      s_axis_tlast,
+   // parser input
+   input                                       hdr_rd,
+   input                                       hdr_clear,
+   input [IP_ADDR_LEN-1:0]                     hdr_src_ip,
+   input [IP_ADDR_LEN-1:0]                     hdr_dst_ip,
+   input [PORT_LEN-1:0]                        hdr_src_port,
+   input [PORT_LEN-1:0]                        hdr_dst_port,
+
+   //fifo_signals
+   output                                      m_send,
+   output                                      m_send_rd,
 
     // Registers
     input  [NUM_RW_REGS*C_S_AXI_DATA_WIDTH-1:0]  rw_regs,
@@ -81,6 +78,17 @@ module filter
     output [NUM_WO_REGS*C_S_AXI_DATA_WIDTH-1:0]  wo_defaults,
     input  [NUM_RO_REGS*C_S_AXI_DATA_WIDTH-1:0]  ro_regs
 );
+
+   localparam FILTER_SRC_ADDR = 32'h5;
+   localparam IP_ADDR_LEN = 32;
+   localparam PORT_LEN = 16;
+
+   localparam SRC_IP = 32'hAAAAAAAA;
+   localparam DST_IP = 32'hBBBBBBBB;
+
+   localparam WAIT_FOR_HEADER = 2'b00;
+   localparam LOOKUP          = 2'b01;
+   localparam WAIT_FOR_CLEAR  = 2'b10;
 
    function integer log2;
       input integer number;
@@ -93,52 +101,65 @@ module filter
    endfunction // log2
 
    // ------------- Regs/ wires -----------
-
-   wire                             in_fifo_nearly_full;
-   wire                             in_fifo_empty;
-   reg                              in_fifo_rd_en;
-   wire [C_M_AXIS_TUSER_WIDTH-1:0]  fifo_out_tuser;
-   wire [C_M_AXIS_DATA_WIDTH-1:0]   fifo_out_tdata;
-   wire [C_M_AXIS_DATA_WIDTH/8-1:0] fifo_out_tstrb;
-   wire  	                        fifo_out_tlast;
-   wire                             fifo_tvalid;
-   wire                             fifo_tlast;
+   reg                              send;
+   reg                              send_rd;
+   reg                              send_next;
+   reg                              send_rd_next;
+   reg [1:0]                        state;
+   reg [1:0]                        state_next;
 
    // ------------ Modules -------------
 
-   fallthrough_small_fifo
-   #( .WIDTH(C_M_AXIS_DATA_WIDTH+C_M_AXIS_TUSER_WIDTH+C_M_AXIS_DATA_WIDTH/8+1),
-      .MAX_DEPTH_BITS(2)
-    )
-    input_fifo
-    ( // Outputs
-      .dout                         ({fifo_out_tlast, fifo_out_tuser, fifo_out_tstrb, fifo_out_tdata}),
-      .full                         (),
-      .nearly_full                  (in_fifo_nearly_full),
-	  .prog_full                    (),
-      .empty                        (in_fifo_empty),
-      // Inputs
-      .din                          ({s_axis_tlast, s_axis_tuser, s_axis_tstrb, s_axis_tdata}),
-      .wr_en                        (s_axis_tvalid & s_axis_tready),
-      .rd_en                        (in_fifo_rd_en),
-      .reset                        (~axi_aresetn),
-      .clk                          (axi_aclk));
-
    // ------------- Logic ------------
 
-   assign s_axis_tready = !in_fifo_nearly_full;
-   assign m_axis_tuser = fifo_out_tuser;
-   assign m_axis_tdata = fifo_out_tdata;
-   assign m_axis_tlast = fifo_out_tlast;
-   assign m_axis_tstrb = fifo_out_tstrb;
-   assign m_axis_tvalid = ~in_fifo_empty;
+   assign m_send = send;
+   assign m_send_rd = send_rd;
 
    always @(*) begin
-      in_fifo_rd_en = 0;
 
-      if (m_axis_tready && !in_fifo_empty) begin
-        in_fifo_rd_en = 1;
-      end
+      state_next = state; 
+      send_next = send;
+      send_rd_next = send_rd;
+
+      case (state) 
+         WAIT_FOR_HEADER: begin 
+            send_next = 1'b0;
+            send_rd_next = 1'b0;
+            if (hdr_rd) begin 
+               state_next = LOOKUP;
+               send_rd_next = 1'b1;
+            end
+         end
+
+         LOOKUP: begin
+            //send_next = 1'b0;
+            if (hdr_src_ip == SRC_IP)
+               send_next = 1;
+            else
+               send_next = 0;
+            send_rd_next = 1'b1;
+            state_next = WAIT_FOR_CLEAR; 
+         end
+
+         WAIT_FOR_CLEAR: begin      
+            if (hdr_clear) begin 
+               state_next = WAIT_FOR_HEADER;
+            end
+         end
+      endcase 
+   end
+
+   always @(posedge axi_aclk) begin
+     if (!axi_aresetn) begin 
+        send <= 0;
+        send_rd <= 0;
+        state <= WAIT_FOR_HEADER;
+     end
+     else begin
+        send <= send_next;
+        send_rd <= send_rd_next;
+        state <= state_next;
+     end 
    end
 
 endmodule

@@ -62,7 +62,7 @@ module fifo_store
     output [C_M_AXIS_DATA_WIDTH - 1:0]         m_axis_tdata,
     output [((C_M_AXIS_DATA_WIDTH / 8)) - 1:0] m_axis_tstrb,
     output [C_M_AXIS_TUSER_WIDTH-1:0]          m_axis_tuser,
-    output                                     m_axis_tvalid,
+    output reg                                    m_axis_tvalid,
     input                                      m_axis_tready,
     output                                     m_axis_tlast,
 
@@ -74,9 +74,13 @@ module fifo_store
     output                                     s_axis_tready,
     input                                      s_axis_tlast,
 
+    input                                   result_wr_en,
+    input                                      result_din,
+    output                                     result_nearly_full
 
-   input                                       s_send,
-   input                                       s_send_rd
+
+   //input                                       s_send,
+   //input                                       s_send_rd
     // Registers
 //    input  [NUM_RW_REGS*C_S_AXI_DATA_WIDTH-1:0]  rw_regs,
 //    output [NUM_RW_REGS*C_S_AXI_DATA_WIDTH-1:0]  rw_defaults,
@@ -86,6 +90,9 @@ module fifo_store
 );
 
    localparam FILTER_SRC_ADDR = 32'h5;
+   
+   localparam READ =  1'b0;
+   localparam WRITE = 1'b1;
 
    function integer log2;
       input integer number;
@@ -109,11 +116,18 @@ module fifo_store
    wire                             fifo_tvalid;
    wire                             fifo_tlast;
 
+   reg                              result_deque;
+   wire                             result_dout;
+   wire                             result_empty;
+
+   reg                              state;
+   reg                              state_next;
+
    // ------------ Modules -------------
 
    fallthrough_small_fifo
    #( .WIDTH(C_M_AXIS_DATA_WIDTH+C_M_AXIS_TUSER_WIDTH+C_M_AXIS_DATA_WIDTH/8+1),
-      .MAX_DEPTH_BITS(2)
+      .MAX_DEPTH_BITS(10)
     )
     input_fifo
     ( // Outputs
@@ -129,6 +143,26 @@ module fifo_store
       .reset                        (~axi_aresetn),
       .clk                          (axi_aclk));
 
+
+   fallthrough_small_fifo
+   #( .WIDTH(1),
+      .MAX_DEPTH_BITS(10)
+    )
+    result_fifo
+    ( // Outputs
+      .dout                         (result_dout),
+      .full                         (),
+      .nearly_full                  (result_nearly_full),
+	  .prog_full                    (),
+      .empty                        (result_empty),
+      // Inputs
+      .din                          (result_din),
+      .wr_en                        (result_wr_en),
+      .rd_en                        (result_deque),
+      .reset                        (~axi_aresetn),
+      .clk                          (axi_aclk));
+
+
    // ------------- Logic ------------
 
    assign s_axis_tready = !in_fifo_nearly_full;
@@ -136,25 +170,67 @@ module fifo_store
    assign m_axis_tdata = fifo_out_tdata;
    assign m_axis_tlast = fifo_out_tlast;
    assign m_axis_tstrb = fifo_out_tstrb;
-   assign m_axis_tvalid = ~in_fifo_empty;
 
    always @(*) begin
-      in_fifo_rd_en = 0;
 
-      if (m_axis_tready && !in_fifo_empty) begin
-         in_fifo_rd_en = 1;
-      end
+      state_next = state;
+
+      case (state) 
+         READ: begin
+            m_axis_tvalid = 1'b0;
+            in_fifo_rd_en = 0;
+            result_deque = 1'b0;
+            if (!result_empty) begin
+               state_next = WRITE;
+
+               //if(!in_fifo_empty) begin
+               //   m_axis_tvalid = 1'b1;
+               //   if(m_axis_tready) begin                  
+               //      in_fifo_rd_en = 1'b1;
+               //      m_axis_tvalid = s_send; 
+               //      if (fifo_out_tlast) begin
+               //         state_next = READ;
+               //      end
+               //   end else begin
+               //      in_fifo_rd_en = 1'b0;
+               //    //m_axis_tvalid = 1'b0;
+               //   end
+               //end else begin
+               //   in_fifo_rd_en = 1'b0;
+               //   m_axis_tvalid = 1'b0; 
+               //end
+            end
+         end
+         WRITE : begin
+            if(!in_fifo_empty) begin
+               m_axis_tvalid = 1'b1;
+               if(m_axis_tready) begin                  
+                  in_fifo_rd_en = 1'b1;
+                  m_axis_tvalid = result_dout; 
+                  if (fifo_out_tlast) begin
+                     state_next = READ;
+                     result_deque = 1'b1;
+                  end
+               end else begin
+                   in_fifo_rd_en = 1'b0;
+                   //m_axis_tvalid = 1'b0;
+               end
+            end else begin
+               in_fifo_rd_en = 1'b0;
+               m_axis_tvalid = 1'b0; 
+            end
+        end 
+      endcase
    end
 
-/*  always @(posedge axi_aclk) begin
+  always @(posedge axi_aclk) begin
      if (!axi_aresetn) begin 
-        in_fifo_rd_en <= 1'b0;
+        state <= READ;
       end
       else begin
-         if (m_axis_tready && !in_fifo_empty) in_fifo_rd_en <= 1'b1;
-         else in_fifo_rd_en <= 1'b0;     
+         state <= state_next;
       end
-   end */
+   end 
 
 
 endmodule
