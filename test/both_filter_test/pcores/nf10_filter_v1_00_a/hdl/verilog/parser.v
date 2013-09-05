@@ -58,14 +58,6 @@ module parser
     input axi_aclk,
     input axi_aresetn,
 
-    // Master Stream Ports (interface to data path downstream)
-//    output reg [C_M_AXIS_DATA_WIDTH - 1:0]         m_axis_tdata,
-//    output reg [((C_M_AXIS_DATA_WIDTH / 8)) - 1:0] m_axis_tstrb,
-//    output reg [C_M_AXIS_TUSER_WIDTH-1:0]          m_axis_tuser,
-//    output reg                                    m_axis_tvalid,
-//    input                                      m_axis_tready,
-//    output reg                                    m_axis_tlast,
-
     // Slave Stream Ports (interface to data path upstream)
     input [C_S_AXIS_DATA_WIDTH - 1:0]          s_axis_tdata,
     input [((C_S_AXIS_DATA_WIDTH / 8)) - 1:0]  s_axis_tstrb,
@@ -81,14 +73,9 @@ module parser
     output [NUM_WO_REGS*C_S_AXI_DATA_WIDTH-1:0]  wo_defaults,
     input  [NUM_RO_REGS*C_S_AXI_DATA_WIDTH-1:0]  ro_regs,
     
-    output reg                                      result_din,
-    input                                       result_nearly_full,
-    output reg                                      result_wr_en
-//    output reg [31:0]                          source_addr,
-//    output reg [31:0]                          dest_addr,
-//    output reg [15:0]                          source_port,
-//    output reg [15:0]                          dest_port,
-//    output reg                                 found_header
+    output reg                                   result_din,
+    input                                        result_nearly_full,
+    output reg                                   result_wr_en
 );
 
    localparam READ_HEADER_1 = 3'b000;
@@ -222,19 +209,9 @@ filter
                   //
                   found_header_next = 1'b1;
                   clear_header_next = 1'b0; 
-//                   if (source_addr == SRC_IP)
-//                     send_next = 1;
-//                  else
-//                     send_next = 0;
                   state_next = PUSH_RESULT;
                   in_fifo_rd_en = 1'b0;
                   
-                  //found_header_next = 1'b1;
-                  //clear_header_next = 1'b0; 
-                  //if(!fifo_out_tlast)
-                  //   state_next = PAYLOAD; 
-                  //else 
-                  //   state_next = READ_HEADER_1; 
                end
             end
             PUSH_RESULT: begin

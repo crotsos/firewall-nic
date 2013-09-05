@@ -101,8 +101,6 @@ module filter
    endfunction // log2
 
    // ------------- Regs/ wires -----------
-   //reg                              send;
-   //reg                              send_rd;
    reg                              send_next;
    reg                              send_rd_next;
    reg [1:0]                        state;
@@ -111,9 +109,6 @@ module filter
    // ------------ Modules -------------
 
    // ------------- Logic ------------
-
-   //assign m_send = send;
-   //assign m_send_rd = send_rd;
 
    always @(*) begin
 
@@ -131,7 +126,6 @@ module filter
          end
 
          LOOKUP: begin
-            //send_next = 1'b0;
             if (hdr_src_ip == SRC_IP)
                send_next = 1;
             else

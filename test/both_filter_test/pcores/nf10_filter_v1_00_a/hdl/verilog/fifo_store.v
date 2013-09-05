@@ -77,16 +77,6 @@ module fifo_store
     input                                   result_wr_en,
     input                                      result_din,
     output                                     result_nearly_full
-
-
-   //input                                       s_send,
-   //input                                       s_send_rd
-    // Registers
-//    input  [NUM_RW_REGS*C_S_AXI_DATA_WIDTH-1:0]  rw_regs,
-//    output [NUM_RW_REGS*C_S_AXI_DATA_WIDTH-1:0]  rw_defaults,
-//    input  [NUM_WO_REGS*C_S_AXI_DATA_WIDTH-1:0]  wo_regs,
-//    output [NUM_WO_REGS*C_S_AXI_DATA_WIDTH-1:0]  wo_defaults,
-//    input  [NUM_RO_REGS*C_S_AXI_DATA_WIDTH-1:0]  ro_regs
 );
 
    localparam FILTER_SRC_ADDR = 32'h5;
@@ -182,23 +172,6 @@ module fifo_store
             result_deque = 1'b0;
             if (!result_empty) begin
                state_next = WRITE;
-
-               //if(!in_fifo_empty) begin
-               //   m_axis_tvalid = 1'b1;
-               //   if(m_axis_tready) begin                  
-               //      in_fifo_rd_en = 1'b1;
-               //      m_axis_tvalid = s_send; 
-               //      if (fifo_out_tlast) begin
-               //         state_next = READ;
-               //      end
-               //   end else begin
-               //      in_fifo_rd_en = 1'b0;
-               //    //m_axis_tvalid = 1'b0;
-               //   end
-               //end else begin
-               //   in_fifo_rd_en = 1'b0;
-               //   m_axis_tvalid = 1'b0; 
-               //end
             end
          end
          WRITE : begin
@@ -231,6 +204,5 @@ module fifo_store
          state <= state_next;
       end
    end 
-
 
 endmodule
