@@ -3,13 +3,13 @@
  *  NetFPGA-10G http://www.netfpga.org
  *
  *  File:
- *        nf10_filter.v
+ *        nf10_crypto.v
  *
  *  Library:
- *        hw/contrib/pcores/nf10_filter_v1_00_a
+ *        hw/contrib/pcores/nf10_crypto_v1_00_a
  *
  *  Module:
- *        nf10_filter
+ *        nf10_crypto
  *
  *  Author:
  *        Adam Covington, Muhammad Shahbaz
@@ -39,7 +39,7 @@
  *
  */
 
-module nf10_filter
+module nf10_crypto
 #(
     // Master AXI Stream Data Width
     parameter C_M_AXIS_DATA_WIDTH=256,
@@ -104,9 +104,7 @@ module nf10_filter
    endfunction // log2
 
    // --------- Internal Parameters ------
-   localparam NUM_RULES = 3;
-
-   localparam NUM_RW_REGS = 4 * NUM_RULES;
+   localparam NUM_RW_REGS = 1;
    localparam NUM_WO_REGS = 1;
    localparam NUM_RO_REGS = 1;
 
@@ -117,10 +115,6 @@ module nf10_filter
    wire [NUM_WO_REGS*C_S_AXI_DATA_WIDTH-1:0] wo_regs;
    wire [NUM_WO_REGS*C_S_AXI_DATA_WIDTH-1:0] wo_defaults;
    wire [NUM_RO_REGS*C_S_AXI_DATA_WIDTH-1:0] ro_regs;
-
-   wire result_wr_en;
-   wire result_din;
-   wire result_nearly_full;
 
    // ------------ Modules -------------
 
@@ -166,8 +160,8 @@ module nf10_filter
          .ro_regs         (ro_regs)
         );
 
-   // filter (user-logic)
-   parser #
+   // crypto (user-logic)
+   crypto #
    (
      .C_M_AXIS_DATA_WIDTH  (C_M_AXIS_DATA_WIDTH),
      .C_S_AXIS_DATA_WIDTH  (C_S_AXIS_DATA_WIDTH),
@@ -178,45 +172,7 @@ module nf10_filter
      .NUM_WO_REGS          (NUM_WO_REGS),
      .NUM_RO_REGS          (NUM_RO_REGS)
    )
-     parser
-       (
-         // Global Ports
-         .axi_aclk      (s_axi_aclk),
-         .axi_aresetn   (s_axi_aresetn),
-
-         .result_wr_en(result_wr_en),
-         .result_din(result_din),
-         .result_nearly_full(result_nearly_full),
-
-         // Slave Stream Ports (interface to RX queues)
-         .s_axis_tdata  (s_axis_tdata),
-         .s_axis_tstrb  (s_axis_tstrb),
-         .s_axis_tuser  (s_axis_tuser),
-         .s_axis_tvalid (s_axis_tvalid),
-         .s_axis_tready (s_axis_tready_filter),
-         .s_axis_tlast  (s_axis_tlast),
-
-         // Registers
-         .rw_regs       (rw_regs),
-         .rw_defaults   (rw_defaults),
-         .wo_regs       (wo_regs),
-         .wo_defaults   (wo_defaults),
-         .ro_regs       (ro_regs)
-       );
-
-   // filter (user-logic)
-   fifo_store #
-   (
-     .C_M_AXIS_DATA_WIDTH  (C_M_AXIS_DATA_WIDTH),
-     .C_S_AXIS_DATA_WIDTH  (C_S_AXIS_DATA_WIDTH),
-     .C_M_AXIS_TUSER_WIDTH (C_M_AXIS_TUSER_WIDTH),
-     .C_S_AXIS_TUSER_WIDTH (C_S_AXIS_TUSER_WIDTH),
-
-     .NUM_RW_REGS          (NUM_RW_REGS),
-     .NUM_WO_REGS          (NUM_WO_REGS),
-     .NUM_RO_REGS          (NUM_RO_REGS)
-   )
-     fifo_store
+     crypto
        (
          // Global Ports
          .axi_aclk      (s_axi_aclk),
@@ -238,9 +194,12 @@ module nf10_filter
          .s_axis_tready (s_axis_tready),
          .s_axis_tlast  (s_axis_tlast),
 
-         .result_wr_en(result_wr_en),
-         .result_din(result_din),
-         .result_nearly_full(result_nearly_full)
+         // Registers
+         .rw_regs       (rw_regs),
+         .rw_defaults   (rw_defaults),
+         .wo_regs       (wo_regs),
+         .wo_defaults   (wo_defaults),
+         .ro_regs       (ro_regs)
        );
 
 endmodule

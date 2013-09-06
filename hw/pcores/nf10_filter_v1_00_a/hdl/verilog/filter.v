@@ -49,38 +49,52 @@ module filter
     parameter C_S_AXIS_TUSER_WIDTH=128,
     parameter C_S_AXI_DATA_WIDTH=32,
     // Register parameters
-    parameter NUM_RW_REGS = 0,
+    
+    parameter NUM_RULES = 3,
+
+    parameter NUM_RW_REGS = 4 * NUM_RULES,
     parameter NUM_WO_REGS = 0,
-    parameter NUM_RO_REGS = 0
+    parameter NUM_RO_REGS = 0,
+
+    parameter IP_ADDR_LEN = 32,
+    parameter PORT_LEN    = 16
 )
 (
     // Global Ports
     input axi_aclk,
     input axi_aresetn,
 
-    // Master Stream Ports (interface to data path downstream)
-    output [C_M_AXIS_DATA_WIDTH - 1:0]         m_axis_tdata,
-    output [((C_M_AXIS_DATA_WIDTH / 8)) - 1:0] m_axis_tstrb,
-    output [C_M_AXIS_TUSER_WIDTH-1:0]          m_axis_tuser,
-    output                                     m_axis_tvalid,
-    input                                      m_axis_tready,
-    output                                     m_axis_tlast,
 
-    // Slave Stream Ports (interface to data path upstream)
-    input [C_S_AXIS_DATA_WIDTH - 1:0]          s_axis_tdata,
-    input [((C_S_AXIS_DATA_WIDTH / 8)) - 1:0]  s_axis_tstrb,
-    input [C_S_AXIS_TUSER_WIDTH-1:0]           s_axis_tuser,
-    input                                      s_axis_tvalid,
-    output                                     s_axis_tready,
-    input                                      s_axis_tlast,
+   // parser input
+   input                                       hdr_rd,
+   input                                       hdr_clear,
+   input [IP_ADDR_LEN-1:0]                     hdr_src_ip,
+   input [IP_ADDR_LEN-1:0]                     hdr_dst_ip,
+   input [PORT_LEN-1:0]                        hdr_src_port,
+   input [PORT_LEN-1:0]                        hdr_dst_port,
+
+   //fifo_signals
+   output reg                                     m_send,
+   output reg                                     m_send_rd,
 
     // Registers
     input  [NUM_RW_REGS*C_S_AXI_DATA_WIDTH-1:0]  rw_regs,
-    output [NUM_RW_REGS*C_S_AXI_DATA_WIDTH-1:0]  rw_defaults,
+    output reg [NUM_RW_REGS*C_S_AXI_DATA_WIDTH-1:0]  rw_defaults,
     input  [NUM_WO_REGS*C_S_AXI_DATA_WIDTH-1:0]  wo_regs,
     output [NUM_WO_REGS*C_S_AXI_DATA_WIDTH-1:0]  wo_defaults,
     input  [NUM_RO_REGS*C_S_AXI_DATA_WIDTH-1:0]  ro_regs
 );
+
+   localparam FILTER_SRC_ADDR = 32'h5;
+
+   localparam SRC_IP = 32'hAAFAAAAA;
+   localparam DST_IP = 32'hBBBBBBBB;
+
+   localparam WAIT_FOR_HEADER = 2'b00;
+   localparam LOOKUP          = 2'b01;
+   localparam WAIT_FOR_CLEAR  = 2'b10;
+
+   localparam RULE_BITS       = NUM_RW_REGS*C_S_AXI_DATA_WIDTH;
 
    function integer log2;
       input integer number;
@@ -93,52 +107,98 @@ module filter
    endfunction // log2
 
    // ------------- Regs/ wires -----------
+   reg                              send_next;
+   reg                              send_rd_next;
+   reg [1:0]                        state;
+   reg [1:0]                        state_next;
 
-   wire                             in_fifo_nearly_full;
-   wire                             in_fifo_empty;
-   reg                              in_fifo_rd_en;
-   wire [C_M_AXIS_TUSER_WIDTH-1:0]  fifo_out_tuser;
-   wire [C_M_AXIS_DATA_WIDTH-1:0]   fifo_out_tdata;
-   wire [C_M_AXIS_DATA_WIDTH/8-1:0] fifo_out_tstrb;
-   wire  	                        fifo_out_tlast;
-   wire                             fifo_tvalid;
-   wire                             fifo_tlast;
+   //reg [31:0]                       src_ip_target_reg [0:3];
+
+   reg [RULE_BITS-1:0]              rules;
+   reg [NUM_RULES-1:0]              i;
+
+   reg [31:0]                       rule_src_ip;
+   reg [31:0]                       rule_dst_ip;
+   reg [15:0]                       rule_src_port;
+   reg [15:0]                       rule_dst_port;
+   reg                              rule_enable_bit;
 
    // ------------ Modules -------------
 
-   fallthrough_small_fifo
-   #( .WIDTH(C_M_AXIS_DATA_WIDTH+C_M_AXIS_TUSER_WIDTH+C_M_AXIS_DATA_WIDTH/8+1),
-      .MAX_DEPTH_BITS(2)
-    )
-    input_fifo
-    ( // Outputs
-      .dout                         ({fifo_out_tlast, fifo_out_tuser, fifo_out_tstrb, fifo_out_tdata}),
-      .full                         (),
-      .nearly_full                  (in_fifo_nearly_full),
-	  .prog_full                    (),
-      .empty                        (in_fifo_empty),
-      // Inputs
-      .din                          ({s_axis_tlast, s_axis_tuser, s_axis_tstrb, s_axis_tdata}),
-      .wr_en                        (s_axis_tvalid & s_axis_tready),
-      .rd_en                        (in_fifo_rd_en),
-      .reset                        (~axi_aresetn),
-      .clk                          (axi_aclk));
-
    // ------------- Logic ------------
 
-   assign s_axis_tready = !in_fifo_nearly_full;
-   assign m_axis_tuser = fifo_out_tuser;
-   assign m_axis_tdata = fifo_out_tdata;
-   assign m_axis_tlast = fifo_out_tlast;
-   assign m_axis_tstrb = fifo_out_tstrb;
-   assign m_axis_tvalid = ~in_fifo_empty;
+   //assign rw_defaults = SRC_IP;
 
    always @(*) begin
-      in_fifo_rd_en = 0;
 
-      if (m_axis_tready && !in_fifo_empty) begin
-        in_fifo_rd_en = 1;
-      end
+      state_next = state; 
+      send_next = m_send;
+      send_rd_next = m_send_rd;
+
+      case (state) 
+         WAIT_FOR_HEADER: begin 
+            send_next = 1'b0;
+            send_rd_next = 1'b0;
+            if (hdr_rd) begin 
+               state_next = LOOKUP;
+            end
+         end
+
+         LOOKUP: begin
+            //if (hdr_src_ip == src_ip_target_reg[0])
+            //   send_next = 0;
+            //else
+            //   send_next = 1;
+
+            send_next = 1;
+            for (i = 0; i < NUM_RULES; i = i + 1) begin
+               // read enable bit
+               rule_enable_bit = rules[i * 128 + 96];
+               if (rule_enable_bit) begin
+                  // read rules out of the register
+                  rule_src_ip   = rules[(i * 128 +  0) +: 32];
+                  rule_dst_ip   = rules[(i * 128 + 32) +: 32];
+                  rule_src_port = rules[(i * 128 + 64) +: 16];
+                  rule_dst_port = rules[(i * 128 + 80) +: 16];
+                  // test rule
+                  if (   (hdr_src_ip   == rule_src_ip)   &&          // check source address
+                         (hdr_dst_ip   == rule_dst_ip)   &&          // check dest.  address
+                         (hdr_src_port == rule_src_port) &&          // check source port
+                         (hdr_dst_port == rule_dst_port)   ) begin   // check dest.  port 
+                     send_next = 0;
+                  end
+               end
+            end
+
+            send_rd_next = 1'b1;
+            state_next = WAIT_FOR_CLEAR; 
+         end
+
+         WAIT_FOR_CLEAR: begin      
+            if (hdr_clear) begin 
+               state_next = WAIT_FOR_HEADER;
+            end
+         end
+      endcase 
+   end
+
+   always @(posedge axi_aclk) begin
+     if (!axi_aresetn) begin 
+        m_send <= 0;
+        m_send_rd <= 0;
+        state <= WAIT_FOR_HEADER;
+
+        //src_ip_target_reg[0] <= SRC_IP;
+         
+        rw_defaults <= 0;
+        rules <= 0;
+     end else begin
+        m_send <= send_next;
+        m_send_rd <= send_rd_next;
+        state <= state_next;
+        //src_ip_target_reg[0] <= rw_regs;
+        rules <= rw_regs;
+     end 
    end
 
 endmodule

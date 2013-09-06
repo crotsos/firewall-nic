@@ -104,7 +104,7 @@ module nf10_filter
    endfunction // log2
 
    // --------- Internal Parameters ------
-   localparam NUM_RW_REGS = 1;
+   localparam NUM_RW_REGS = 2;
    localparam NUM_WO_REGS = 1;
    localparam NUM_RO_REGS = 1;
 

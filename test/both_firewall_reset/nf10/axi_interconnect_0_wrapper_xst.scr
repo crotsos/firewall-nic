@@ -3,16 +3,19 @@
 #  NetFPGA-10G http://www.netfpga.org
 #
 #  File:
-#        nf10_filter_v2_1_0.pao
+#        axi_interconnect_0_wrapper_xst.scr
 #
-#  Library:
-#        hw/contrib/pcores/nf10_filter_v1_00_a
+#  Project:
+#        nic
+#
+#  Module:
+#        axi_interconnect.scr
 #
 #  Author:
-#        Adam Covington, Muhammad Shahbaz
+#        Mario Flajslik
 #
 #  Description:
-#        Microprocessor Peripheral Analysis Order File
+#        scr file to walkaround axi_interconnect - Virtex-5 issue
 #
 #  Copyright notice:
 #        Copyright (C) 2010, 2011 The Board of Trustees of The Leland Stanford
@@ -36,10 +39,15 @@
 #
 #
 
-lib proc_common_v3_00_a  all
-lib axi_lite_ipif_v1_01_a  all
-lib nf10_proc_common_v1_00_a  all
-lib nf10_filter_v1_00_a filter verilog
-lib nf10_filter_v1_00_a fifo_store verilog
-lib nf10_filter_v1_00_a parser verilog
-lib nf10_filter_v1_00_a nf10_filter verilog
+run
+-opt_mode speed
+-netlist_hierarchy as_optimized
+-opt_level 1
+-p virtex6
+-top axi_interconnect_0_wrapper
+-ifmt MIXED
+-ifn axi_interconnect_0_wrapper_xst.prj
+-ofn ../implementation/axi_interconnect_0_wrapper.ngc
+-hierarchy_separator /
+-iobuf NO
+-sd {../implementation/axi_interconnect_0_wrapper}

@@ -49,9 +49,15 @@ module filter
     parameter C_S_AXIS_TUSER_WIDTH=128,
     parameter C_S_AXI_DATA_WIDTH=32,
     // Register parameters
-    parameter NUM_RW_REGS = 1,
+    
+    parameter NUM_RULES = 3,
+
+    parameter NUM_RW_REGS = 4 * NUM_RULES,
     parameter NUM_WO_REGS = 0,
-    parameter NUM_RO_REGS = 0
+    parameter NUM_RO_REGS = 0,
+
+    parameter IP_ADDR_LEN = 32,
+    parameter PORT_LEN    = 16
 )
 (
     // Global Ports
@@ -80,8 +86,6 @@ module filter
 );
 
    localparam FILTER_SRC_ADDR = 32'h5;
-   localparam IP_ADDR_LEN = 32;
-   localparam PORT_LEN = 16;
 
    localparam SRC_IP = 32'hAAFAAAAA;
    localparam DST_IP = 32'hBBBBBBBB;
@@ -89,6 +93,8 @@ module filter
    localparam WAIT_FOR_HEADER = 2'b00;
    localparam LOOKUP          = 2'b01;
    localparam WAIT_FOR_CLEAR  = 2'b10;
+
+   localparam RULE_BITS       = NUM_RW_REGS*C_S_AXI_DATA_WIDTH;
 
    function integer log2;
       input integer number;
@@ -106,7 +112,16 @@ module filter
    reg [1:0]                        state;
    reg [1:0]                        state_next;
 
-   reg [31:0]                       src_ip_target_reg;
+   //reg [31:0]                       src_ip_target_reg [0:3];
+
+   reg [RULE_BITS-1:0]              rules;
+   reg [NUM_RULES-1:0]              i;
+
+   reg [31:0]                       rule_src_ip;
+   reg [31:0]                       rule_dst_ip;
+   reg [15:0]                       rule_src_port;
+   reg [15:0]                       rule_dst_port;
+   reg                              rule_enable_bit;
 
    // ------------ Modules -------------
 
@@ -130,11 +145,31 @@ module filter
          end
 
          LOOKUP: begin
-            //if (hdr_src_ip == SRC_IP)
-            if (hdr_src_ip == src_ip_target_reg)
-               send_next = 0;
-            else
-               send_next = 1;
+            //if (hdr_src_ip == src_ip_target_reg[0])
+            //   send_next = 0;
+            //else
+            //   send_next = 1;
+
+            send_next = 1;
+            for (i = 0; i < NUM_RULES; i = i + 1) begin
+               // read enable bit
+               rule_enable_bit = rules[i * 128 + 96];
+               if (rule_enable_bit) begin
+                  // read rules out of the register
+                  rule_src_ip   = rules[(i * 128 +  0) +: 32];
+                  rule_dst_ip   = rules[(i * 128 + 32) +: 32];
+                  rule_src_port = rules[(i * 128 + 64) +: 16];
+                  rule_dst_port = rules[(i * 128 + 80) +: 16];
+                  // test rule
+                  if (   (hdr_src_ip   == rule_src_ip)   &&          // check source address
+                         (hdr_dst_ip   == rule_dst_ip)   &&          // check dest.  address
+                         (hdr_src_port == rule_src_port) &&          // check source port
+                         (hdr_dst_port == rule_dst_port)   ) begin   // check dest.  port 
+                     send_next = 0;
+                  end
+               end
+            end
+
             send_rd_next = 1'b1;
             state_next = WAIT_FOR_CLEAR; 
          end
@@ -152,13 +187,17 @@ module filter
         m_send <= 0;
         m_send_rd <= 0;
         state <= WAIT_FOR_HEADER;
-        src_ip_target_reg <= SRC_IP;
-        rw_defaults <= SRC_IP;
+
+        //src_ip_target_reg[0] <= SRC_IP;
+         
+        rw_defaults <= 0;
+        rules <= 0;
      end else begin
         m_send <= send_next;
         m_send_rd <= send_rd_next;
         state <= state_next;
-        src_ip_target_reg <= rw_regs;
+        //src_ip_target_reg[0] <= rw_regs;
+        rules <= rw_regs;
      end 
    end
 

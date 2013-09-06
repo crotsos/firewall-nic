@@ -50,12 +50,13 @@ module filter
     parameter C_S_AXI_DATA_WIDTH=32,
     // Register parameters
     
-    parameter NUM_RULES = 3,
+    parameter NUM_RULES = 20,
 
     parameter NUM_RW_REGS = 4 * NUM_RULES,
     parameter NUM_WO_REGS = 0,
     parameter NUM_RO_REGS = 0
-)
+
+    )
 (
     // Global Ports
     input axi_aclk,
@@ -116,6 +117,12 @@ module filter
    reg [RULE_BITS-1:0]              rules;
    reg [NUM_RULES-1:0]              i;
 
+   reg [31:0]                       rule_src_ip;
+   reg [31:0]                       rule_dst_ip;
+   reg [15:0]                       rule_src_port;
+   reg [15:0]                       rule_dst_port;
+   reg                              rule_enable_bit;
+
    // ------------ Modules -------------
 
    // ------------- Logic ------------
@@ -142,13 +149,22 @@ module filter
             //   send_next = 0;
             //else
             //   send_next = 1;
+
             send_next = 1;
             for (i = 0; i < NUM_RULES; i = i + 1) begin
-               if (rules[i * 128 + 96]) begin
-                  if (   (hdr_src_ip   == rules[(i * 128 + 31):(i * 128 +  0)]) &&
-                         (hdr_dst_ip   == rules[(i * 128 + 63):(i * 128 + 32)]) &&
-                         (hdr_src_port == rules[(i * 128 + 79):(i * 128 + 64)]) &&
-                         (hdr_dst_port == rules[(i * 128 + 95):(i * 128 + 80)]) ) begin
+               // read enable bit
+               rule_enable_bit = rules[i * 128 + 96];
+               if (rule_enable_bit) begin
+                  // read rules out of the register
+                  rule_src_ip   = rules[(i * 128 +  0) +: 32];
+                  rule_dst_ip   = rules[(i * 128 + 32) +: 32];
+                  rule_src_port = rules[(i * 128 + 64) +: 16];
+                  rule_dst_port = rules[(i * 128 + 80) +: 16];
+                  // test rule
+                  if (   (hdr_src_ip   == rule_src_ip)   &&          // check source address
+                         (hdr_dst_ip   == rule_dst_ip)   &&          // check dest.  address
+                         (hdr_src_port == rule_src_port) &&          // check source port
+                         (hdr_dst_port == rule_dst_port)   ) begin   // check dest.  port 
                      send_next = 0;
                   end
                end
@@ -174,7 +190,7 @@ module filter
 
         //src_ip_target_reg[0] <= SRC_IP;
          
-        rw_defaults <= SRC_IP;
+        rw_defaults <= 0;
         rules <= 0;
      end else begin
         m_send <= send_next;

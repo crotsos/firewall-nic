@@ -73,7 +73,7 @@ module parser
     output [NUM_WO_REGS*C_S_AXI_DATA_WIDTH-1:0]  wo_defaults,
     input  [NUM_RO_REGS*C_S_AXI_DATA_WIDTH-1:0]  ro_regs,
     
-    output reg                                   result_din,
+    output reg [104:0]                                  result_din,
     input                                        result_nearly_full,
     output reg                                   result_wr_en
 );
@@ -102,15 +102,10 @@ module parser
    reg [2:0]                           state_next;
    
    reg [31:0]                          source_addr;
+   reg [7:0]                           proto;
    reg [31:0]                          dest_addr;
    reg [15:0]                          source_port;
    reg [15:0]                          dest_port;
-
-   reg [31:0]                          source_addr_next;
-   reg [31:0]                          dest_addr_next;
-   reg [15:0]                          source_port_next;
-   reg [15:0]                          dest_port_next;
-
    reg                                 found_header;
    reg                                 found_header_next;
    reg                                 clear_header;
@@ -184,11 +179,12 @@ filter
       found_header_next = found_header;
       clear_header_next = clear_header;
       result_wr_en = 1'b0;
+      result_din = 0;
 
       if (!axi_aresetn) begin
          state_next = READ_HEADER_1;
-         //found_header = 1'b0;
-         //clear_header = 1'b0; 
+         found_header = 1'b0;
+         clear_header = 1'b0; 
          found_header_next = 1'b0;
          clear_header_next = 1'b0; 
       end else begin
@@ -199,29 +195,26 @@ filter
                if (!in_fifo_empty) begin 
                   state_next = READ_HEADER_2; 
                   // read source IP address
-                  //source_addr        = fifo_out_tdata[47:16];
-                  source_addr_next   = fifo_out_tdata[47:16];
+                  proto              = fifo_out_tdata[71:64];
+                  source_addr        = fifo_out_tdata[47:16];
                   // read first part of destination IP address
-                  //dest_addr[31:16]   = fifo_out_tdata[15:0];
-                  dest_addr_next[31:16]   = fifo_out_tdata[15:0];
+                  dest_addr[31:16]   = fifo_out_tdata[15:0];
                end
             end   
             READ_HEADER_2: begin
                if(!in_fifo_empty) begin
                   // read last 2 bytes of destination IP address
-                  //dest_addr[15:0] = fifo_out_tdata[255:240];
-                  dest_addr_next[15:0] = fifo_out_tdata[255:240];
+                  dest_addr[15:0] = fifo_out_tdata[255:240];
                   // read source port
-                  //source_port  = fifo_out_tdata[239:224];
-                  source_port_next  = fifo_out_tdata[239:224];
+                  source_port  = fifo_out_tdata[239:224];
                   // read destination port
-                  //dest_port    = fifo_out_tdata[223:208];
-                  dest_port_next    = fifo_out_tdata[223:208];
+                  dest_port    = fifo_out_tdata[223:208];
                   //
                   found_header_next = 1'b1;
                   clear_header_next = 1'b0; 
                   state_next = PUSH_RESULT;
                   in_fifo_rd_en = 1'b0;
+                  
                end
             end
             PUSH_RESULT: begin
@@ -230,7 +223,7 @@ filter
                in_fifo_rd_en = 1'b0;
                if (m_send_rd && !result_nearly_full) begin
                   result_wr_en = 1'b1;
-                  result_din = m_send;
+                  result_din = {m_send, source_addr, dest_addr, source_port, dest_port, proto};
                   state_next = PAYLOAD;
                end
             end
@@ -255,17 +248,12 @@ filter
         state <= READ_HEADER_1;
         source_addr <= 32'h0;
         dest_addr <= 32'h0;
+        proto <= 8'h0;
         source_port <= 16'h0;
         dest_port <= 16'h0;
         found_header <= 1'b0;
       end else begin
          state <= state_next;
-
-         source_addr <= source_addr_next;
-         dest_addr <= dest_addr_next;
-         source_port <= source_port_next;
-         dest_port <= dest_port_next;
-
          found_header <= found_header_next;
          clear_header <= clear_header_next;
       end

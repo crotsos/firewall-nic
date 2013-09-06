@@ -104,7 +104,7 @@ module nf10_filter
    endfunction // log2
 
    // --------- Internal Parameters ------
-   localparam NUM_RULES = 3;
+   localparam NUM_RULES = 20;
 
    localparam NUM_RW_REGS = 4 * NUM_RULES;
    localparam NUM_WO_REGS = 1;
@@ -119,7 +119,7 @@ module nf10_filter
    wire [NUM_RO_REGS*C_S_AXI_DATA_WIDTH-1:0] ro_regs;
 
    wire result_wr_en;
-   wire result_din;
+   wire [104:0] result_din;
    wire result_nearly_full;
 
    // ------------ Modules -------------

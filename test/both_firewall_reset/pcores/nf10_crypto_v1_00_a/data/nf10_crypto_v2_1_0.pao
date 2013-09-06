@@ -3,10 +3,10 @@
 #  NetFPGA-10G http://www.netfpga.org
 #
 #  File:
-#        nf10_filter_v2_1_0.pao
+#        nf10_crypto_v2_1_0.pao
 #
 #  Library:
-#        hw/contrib/pcores/nf10_filter_v1_00_a
+#        hw/contrib/pcores/nf10_crypto_v1_00_a
 #
 #  Author:
 #        Adam Covington, Muhammad Shahbaz
@@ -39,7 +39,5 @@
 lib proc_common_v3_00_a  all
 lib axi_lite_ipif_v1_01_a  all
 lib nf10_proc_common_v1_00_a  all
-lib nf10_filter_v1_00_a filter verilog
-lib nf10_filter_v1_00_a fifo_store verilog
-lib nf10_filter_v1_00_a parser verilog
-lib nf10_filter_v1_00_a nf10_filter verilog
+lib nf10_crypto_v1_00_a crypto verilog
+lib nf10_crypto_v1_00_a nf10_crypto verilog
